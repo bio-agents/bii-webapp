@@ -1,0 +1,145 @@
+{% extends "browse_base.html" %}
+{% load static from staticfiles %}
+{% block extra_browse_script %}
+<script>
+    vars.urls.browse = "{% url 'browse.browse' %}";
+    vars.number_of_pages = parseInt("{{number_of_pages}}");
+    vars.current_page = parseInt("{{current_page}}");
+</script>
+<script src="{% static 'browse/js/browse.js' %}"></script>
+<script src="{% static 'libs/bootstrap/bootstrap-paginator.min.js' %}"></script>
+{% endblock %}
+
+{% block title %}BII | Browse{% endblock %}
+{% block browse_content %}
+
+<div id="pagination"></div>
+
+<div id="results">
+    {% if data.ERROR %}
+    <script>$().toastmessage('showErrorToast', '{{data.ERROR.messages}}');</script>
+    {% else %}
+    {% if data.INFO %}
+    <script>$().toastmessage('showNoticeToast', '{{data.INFO.messages}}');</script>
+    {% else %}
+
+    {% if toast.ERROR %}
+    <script>$().toastmessage('showErrorToast', '{{toast.ERROR.messages}}');</script>
+    {% endif %}
+    {% if toast.INFO %}
+    <script>$().toastmessage('showNoticeToast', '{{toast.INFO.messages}}');</script>
+    {% endif %}
+
+    {% for investigation in data.investigations %}
+    <div class="investigation">
+        <div class="inv_id">
+            <div><a href="{% url 'browse.investigation' investigation.i_id %}">{{ investigation.i_id }}</a></div>
+        </div>
+        <div class="studies">
+            {% for study in investigation.i_studies %}
+            <div class="study">
+                <div class="study_id">
+                    <a href="{% url 'browse.investigation.study' investigation.i_id study.s_id %}">{{ study.s_id }}</a>
+                </div>
+                <div class="study_info">
+                    <div class="study_char">
+                        {% for organism in study.s_organisms %}
+                        <span>{{ organism }}{% if not forloop.last %}, {% endif %} </span>
+                        {% endfor %}
+                    </div>
+                    <div class="study_details">
+                        <div class="study_title">
+                            {{ study.s_title }}
+                        </div>
+                        <div class="assays">
+                            {% for assay in study.s_assays %}
+                            <div class="assay">
+                                <a href="{% url 'browse.investigation.study.assay' investigation.i_id study.s_id assay.measurement_ assay.technology_ %}">
+                                    <div>
+                                        {{assay.assay_type_count}}
+                                    </div>
+                                    <div class="assay_type">
+                                        <div>
+                                            <img src="{% static 'browse/img/measurements/'%}{{assay.measurement}}.png"/>
+
+                                            <p>
+                                                {{assay.measurement}}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <img src="{% static 'browse/img/technologies/'%}{{assay.technology}}.png"/>
+
+                                            <p>
+                                                {{assay.technology}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+
+    {% for study in data.studies %}
+    <div class="study">
+        <div class="study_id">
+            <a href="{% url 'browse.study' study.s_id %}">{{ study.s_id }}</a>
+        </div>
+        <div class="study_info">
+            <div class="study_char">
+                {% for organism in study.s_organisms %}
+                <span>{{ organism }}{% if not forloop.last %}, {% endif %} </span>
+                {% endfor %}
+            </div>
+            <div class="study_details">
+                <div class="study_title">
+                    {{ study.s_title }}
+                </div>
+                <div class="assays">
+                    {% for assay in study.s_assays %}
+                    <div class="assay">
+                        <a href="{% url 'browse.study.assay' study.s_id assay.measurement_ assay.technology_ %}">
+                            <div>
+                                {{assay.assay_type_count}}
+                            </div>
+                            <div class="assay_type">
+                                <div>
+                                    <img src="{% static 'browse/img/measurements/'%}{{assay.measurement}}.png"/>
+
+                                    <p>
+                                        {{assay.measurement}}
+                                    </p>
+                                </div>
+                                <div>
+                                    <img src="{% static 'browse/img/technologies/'%}{{assay.technology}}.png"/>
+
+                                    <p>
+                                        {{assay.technology}}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

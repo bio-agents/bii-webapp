@@ -1,0 +1,262 @@
+#upload-top-container {
+    width: 627px;
+    margin: 0 auto;
+}
+
+#upload-container {
+    width: 627px;
+    margin: 0 auto;
+    height: 541px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+#cancel{
+    display: none;
+}
+
+#retry {
+    height: 28px !important;
+    width: 30px !important;
+    float: right;
+    line-height: 28px;
+    text-align: center;
+    padding: 0px;
+}
+
+#retry img{
+    height: 15px;
+    width: 15px;
+    margin-top: -3px;
+}
+
+.uneditable-input {
+    width: 400px !important;
+    *display: inline !important;
+}
+
+.fileupload {
+    padding: 10px 20px;
+    background-color: #f2f3f4;
+    margin: 20px auto;
+    position: relative;
+    height: 80px;
+}
+
+.fileupload .sample_file{
+    text-align: right;
+
+    margin-top: -17px;
+    padding-right: 40px;
+}
+
+.main-connector {
+    position: absolute;
+    width: 4px;
+    height: 0px;
+    background-color: #f2f3f4;
+    left: 312px;
+    top: 98px;
+}
+
+.fileupload .input-append {
+    margin: 25px 38px;
+}
+
+.fileupload #upload-button {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.fileupload #upload-button a {
+    width: 87px;
+}
+
+.uploading-container {
+    position: relative;
+    width: 250px;
+    height: 110px;
+    float: left;
+    clear: both;
+}
+
+.uploading-container .connector {
+    position: absolute;
+    background-color: #f2f3f4;
+    height: 4px;
+    width: 0px;
+    top: 30px;
+    right: -62px;
+}
+
+.uploading-container .connector-pin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    position: absolute;
+    top: 22px;
+    right: -74px;
+    display: none;
+}
+
+.uploading-container:nth-child(2n+2) .connector {
+    left: -62px;
+    right: 0px;
+}
+
+.uploading-container:nth-child(2n+2) .connector-pin {
+    left: -73px;
+}
+
+.uploading-container .grey {
+    background-color: #3e3e3f !important;
+}
+
+.uploading-container .orange {
+    background-color: #f7931d !important;
+}
+
+.uploading-container .blue {
+    background-color: #4467FF!important;
+}
+
+.uploading-container .green {
+    background-color: #3ab54a !important;
+}
+
+.upload-function {
+    background-color: #f2f3f4;
+    width: 250px;
+    height: 110px;
+    display: none;
+}
+
+.upload-function div {
+    color: #ffffff;
+}
+
+.upload-function > div:nth-child(2) {
+    padding: 10px;
+}
+
+.upload-function .title {
+    padding: 0px 5px;
+}
+
+.uploading-container:nth-child(2n+2) {
+    float: right;
+}
+
+.upload-function .progress {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    background-color: #e6e7e9 !important;
+    background-image: none;
+}
+
+.upload-function .bar {
+    background-image: none !important;
+    width: 0%;
+    filter: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.upload-function .filename {
+    color: #6e6e70 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/**
+ISSUES
+**/
+.upload-function .issue {
+    display: none;
+    text-align: center;
+    float: right;
+}
+
+.upload-function .issue a {
+    color: #ffffff;
+}
+
+.upload-function .issue a:hover {
+    text-decoration: none;
+}
+
+.upload-function .issue_title {
+    padding: 1px 3px;
+    border-radius: 5px;
+    float: right;
+    margin-top: 3px;
+}
+
+.upload-function .issue_content {
+    text-align: left;
+}
+
+.upload-function .warnings {
+    background-color: #fbb03f;
+    margin-left: 3px;
+}
+
+.upload-function .errors {
+    background-color: #CC3434;
+}
+
+.upload-function div.dropdown-menu {
+    top: 22px;
+    left: 0px;
+    padding: 0px;
+}
+
+.upload-function div.dropdown-menu >div {
+    padding: 3px 10px;
+    max-width: 320px;
+    max-height: 300px;
+    width: 320px;
+    overflow: auto;
+    z-index: 2;
+}
+
+.upload-function div.issue:hover div.dropdown-menu {
+    display: block;
+}
+
+.upload-function div.issue a.menu:after, .dropdown-toggle:after {
+    /*content: none;*/
+}
+
+/**
+RESULT
+**/
+#result {
+    text-align: center;
+    display: none;
+    clear: both;
+    top: 32px;
+    position: relative;
+    z-index: 2;
+    height:80px;
+}
+
+#result .filename {
+    background-color: #24aae1;
+    padding: 20px 5px;
+    width: 70px;
+    height: 28px;
+    white-space: nowrap;
+    margin: 0 auto;
+    color: #ffffff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 28px;
+}

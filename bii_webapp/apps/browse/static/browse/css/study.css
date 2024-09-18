@@ -1,0 +1,99 @@
+/**
+   ASSAYS
+**/
+
+.group_columns {
+    overflow: hidden;
+    padding: 0px;
+}
+
+.group_column {
+    width: 1084px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.group_count {
+    margin-left: 10px;
+    background-color: #24aae1;
+    text-align: center;
+    color: white;
+    border-radius: 30px;
+    margin-right: 20px;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+.group_column_title {
+    padding: 0px 10px;
+    line-height: 34px;
+    background-color: #f3f3f4;
+    border-left: 10px solid #6e6e70;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.group_column_title div {
+    display: inline;
+}
+
+.group_column_title div img {
+    margin-top: -3px;
+    width: 25px;
+    height: 25px;
+}
+
+.group_column_title>span {
+    float: left;
+    max-width: 877px;
+}
+
+.group_row {
+    border-top: 2px solid #f3f3f4;
+    border-left: 2px solid #f3f3f4;
+    border-right: 2px solid #f3f3f4;
+    line-height: 40px;
+    overflow: hidden;
+    padding: 0px 10px;
+}
+
+.group_row a {
+    float: left;
+}
+
+.group_row div {
+    float: right;
+}
+
+.group_row div img {
+    margin-top: -2px;
+    height: 33px;
+}
+
+.group_row div img {
+    margin-left: 5px;
+}
+
+.group_row div img:first-child {
+    margin-left: 0px;
+}
+
+.group_rows .group_row:last-child {
+    border-bottom: 2px solid #f3f3f4;
+}
+
+.assay{
+    margin-top: 0px;
+}
+
+.assay a {
+    color: #ffffff;
+}
+
+.assay a:hover {
+    text-decoration: none;
+}
+
+.assays{
+    float: none;
+}

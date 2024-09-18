@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block extrascript %}
+<script src="{% static 'libs/jszip.js' %}"></script>
+<script src="{% static 'libs/jszip-load.js' %}"></script>
+{% endblock %}
+{% block title %}BII | Upload{% endblock %}
+{% block content %}
+<div id="upload-top-container">
+    <script>
+        vars.urls.uploadSample ="{% url 'upload.uploadSample' %}"
+        vars.urls.initSample ="{% url 'upload.initSample' %}"
+    </script>
+    <h2>Upload ISA-Tab</h2>
+
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+        <div class="input-append">
+            <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span
+                    class="fileupload-name"></span></div>
+                <span id="select_file" class="btn btn-file btn-info fileupload-new"><span>Select file</span>
+                    <input id="file" name="file" type="file"/></span>
+            <button id="cancel" onclick="javascript:upload.cancel();" class="fileupload-exists btn btn-info"
+                    data-dismiss="fileupload">Cancel
+            </button>
+            <a id="retry" class="btn btn-info" href="javascript:$('#file').trigger('change')"><img src="{% static 'upload/img/retry.png' %}"/></a>
+        </div>
+        <div class="sample_file"><a href="javascript:upload.loadSample()">Try a sample file</a></div>
+        <div class="main-connector"></div>
+    </div>
+
+    {% include 'upload_template.html' %}
+
+
+</div>
+{% endblock %}

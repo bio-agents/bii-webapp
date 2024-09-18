@@ -1,0 +1,14 @@
+
+/.project
+/.pydevproject
+/venv
+/deploy
+/requests
+*.pyc
+/bii_webapp/static
+/bii_webapp/media/files
+
+/bii_webapp/tmp
+/*.iml
+
+/.pydevproject

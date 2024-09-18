@@ -1,0 +1,8 @@
+{% extends "registration/registration_base.html" %}
+
+{% block title %}BII | Logged out{% endblock %}
+
+{% block content %}
+<h1>You've been logged out.</h1>
+<p>Thanks for stopping by, when you come back, don't forget to <a href="{% url 'django.contrib.auth.views.login' %}">login</a> again.</p>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static from staticfiles %}
+{% block extracss %}
+<link href="{% static 'create/css/create.css' %}" rel="stylesheet">
+<link href="{% static 'libs/jquery/handsontable/jquery.handsontable.full.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'libs/jquery/jquery.modal.css' %}" type="text/css" media="screen" />
+{% endblock %}
+{% block no_compress_script %}
+<script src="{% static 'libs/knockoutjs/knockout-2.2.1.js' %}"></script>
+{% endblock %}
+{% block extrascript %}
+<script>
+    vars.configuration = {% autoescape off %}{{configuration}}{% endautoescape %};
+    if (vars.configuration && vars.configuration.length > 0) {
+        vars.configuration = JSON.parse(vars.configuration);
+    }
+</script>
+<script src="{% static 'libs/jquery/handsontable/jquery.handsontable.full.js' %}"></script>
+<script src="{% static 'libs/jquery/jquery.validate.js' %}"></script>
+<script src="{% static 'libs/jquery/additional-methods.js' %}"></script>
+<script src="{% static 'libs/jquery/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'libs/xml2json.js' %}"></script>
+<script src="{% static 'create/js/models/contacts_model.js' %}"></script>
+<script src="{% static 'create/js/models/study_assays_model.js' %}"></script>
+<script src="{% static 'create/js/models/study_factors_model.js' %}"></script>
+<script src="{% static 'create/js/models/study_protocols_model.js' %}"></script>
+<script src="{% static 'create/js/models/publications_model.js' %}"></script>
+<script src="{% static 'create/js/models/study_model.js' %}"></script>
+<script src="{% static 'create/js/models/study_spreadsheet_model.js' %}"></script>
+<script src="{% static 'create/js/models/spreadsheet_model.js' %}"></script>
+<script src="{% static 'create/js/models/investigation_model.js' %}"></script>
+<script src="{% static 'create/js/models/view_model.js' %}"></script>
+<script src="{% static 'create/js/create.js' %}"></script>
+<script src="{% static 'create/js/create_upload.js' %}"></script>
+{% endblock %}
+{% block title %}BII | Create{% endblock %}
+
+{% block breadcrumb_bar %}
+{% include "breadcrumb_bar.html" %}
+{% endblock %}
+
+{% block content %}
+<div id="create-container">
+    <h2>Create ISA-Tab</h2>
+    <p id="num_of_studies"><span data-bind='text: investigation().i_studies_model.studies().length'>&nbsp;</span>
+        study(s) added</p>
+
+    <div class='study_edit'>
+        <form id="createISAForm" onSubmit="return false;">
+            {% csrf_token %}
+            <div class="tabbable tabs-left">
+                <ul id="inv_study_tab" class="nav nav-tabs">
+                    <li class='inv_li' data-bind="attr:{class:$root.activeState($($element))}">
+                        <a class="a_inv" href="#investigation_tab1" data-toggle="tab">
+                            Investigation</a></li>
+
+                    <!--  ko foreach:investigation().i_studies_model.studies -->
+                    <li class="study_li" data-bind="attr:{class:$root.activeState($($element))}">
+                        <!-- ko if: ($index() !== 0) -->
+                        <a class="a_remove"><img data-bind='click: $parent.investigation().i_studies_model.removeStudy'
+                                                 src="/bii_webapp/static/base/img/basket_x.png" onclick="javascript:selectDefaultStudy(this)"></a>
+                        <!-- /ko -->
+                        <a class="a_study" data-bind="attr: { href:'#study_tab' + ($index()+1) }" data-toggle="tab">
+                            Study <span data-bind="text: ($index()+1)"></span></a></li>
+
+                    <!-- ko if: ($index() === ($parent.investigation().i_studies_model.studies().length - 1)) -->
+                    <li class="add_item">
+                        <a class="a_study" href="#" data-bind='click: $parent.investigation().i_studies_model.addStudy'
+                           data-toggle="tab">+</a>
+                    </li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </ul>
+
+                <div class="tab-content">
+
+                    <div id="investigation_tab1" class="tab-pane" data-bind="attr:{class:$root.activeState($($element))}">
+                        {% include "investigation_template.html" %}
+                    </div>
+
+                    <!-- ko foreach: investigation().i_studies_model.studies -->
+                    <div class="tab-pane" data-bind="attr: { id:'study_tab'+($index()+1),class:$root.activeState($($element))} ">
+                        {% include "study_template.html" %}
+                    </div>
+                    <!-- /ko -->
+
+                    <div class="upload_button">
+                        <button id="save_button" class="btn btn-info" type="submit">Save
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+    {% include "create_upload.html" %}
+</div>
+{% endblock %}

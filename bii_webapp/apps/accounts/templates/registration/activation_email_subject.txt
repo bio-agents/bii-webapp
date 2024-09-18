@@ -1,0 +1,1 @@
+Activate your {{ site }} account - you have {{ expiration_days }} days!

@@ -1,0 +1,32 @@
+#rep_top_details{
+    margin-bottom: 40px;
+}
+
+.group_columns {
+    padding: 0px !important;
+    margin-top: 10px;
+}
+
+#after_grey_title {
+    margin-top: 10px;
+}
+#after_grey_title:first-child {
+    margin-top: 20px;
+}
+
+
+.group_column {
+}
+
+.group_column_title {
+}
+
+.group_row >div:first-child {
+    float: left;
+    margin-right: 10px;
+}
+
+.group_row > div:first-child > img {
+    height: 30px;
+    width: auto;
+}

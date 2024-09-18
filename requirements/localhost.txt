@@ -1,0 +1,3 @@
+# requirements/dev.txt
+-r common.txt
+django-debug-agentbar==1.2.1
